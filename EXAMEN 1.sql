@@ -36,7 +36,7 @@ CREATE UNIQUE INDEX Ix_Descriptor_Nombre
 
 
 
--- crear la  tabla PAIS (se incluyte el nvarchar para añadir tildes y demas)
+-- crear la  tabla PAIS (se incluyte el nvarchar para aÃ±adir tildes y demas)
 CREATE TABLE Pais(
 	Id int IDENTITY NOT NULL,
 	CONSTRAINT PK_Pais_Id PRIMARY KEY (Id),
@@ -66,7 +66,7 @@ CREATE TABLE Ciudad(
     CONSTRAINT FK_Ciudad_Pais FOREIGN KEY (IdPais) REFERENCES Pais(Id)
 )
 
--- Crear los índices de la tabla CIUDAD
+-- Crear los Ã­ndices de la tabla CIUDAD
 CREATE UNIQUE INDEX Ix_Ciudad_NombrePais
     ON Ciudad(Nombre, IdPais)
 
@@ -79,7 +79,7 @@ CREATE TABLE Editorial(
     CONSTRAINT FK_Editorial_Pais FOREIGN KEY (IdPais) REFERENCES Pais(Id)
 )
 
--- Crear los índices de la tabla EDITORIAL
+-- Crear los Ã­ndices de la tabla EDITORIAL
 CREATE UNIQUE INDEX Ix_Editorial_Nombre
     ON Editorial(Nombre);
 
@@ -92,7 +92,7 @@ CREATE TABLE Autor(
     CONSTRAINT FK_Autor_Pais FOREIGN KEY (IdPais) REFERENCES Pais(Id))
 
 
--- Crear índice De AUTOR
+-- Crear Ã­ndice De AUTOR
 CREATE UNIQUE INDEX Ix_Autor_NombrePais
 ON Autor(Nombre, IdPais);
 GO
@@ -115,7 +115,7 @@ CREATE TABLE Publicacion(
     CONSTRAINT FK_Publicacion_Editorial FOREIGN KEY (IdEditorial) REFERENCES Editorial(Id)
 )
 
--- Crear índice para mejorar búsquedas por título
+-- Crear Ã­ndice para mejorar bÃºsquedas por tÃ­tulo
 CREATE INDEX Ix_Publicacion_Titulo
     ON Publicacion(Titulo)
 
@@ -124,7 +124,7 @@ CREATE INDEX Ix_Publicacion_Titulo
 
 
 
--- Relación entre Publicacion y Volumen
+-- RelaciÃ³n entre Publicacion y Volumen
 CREATE TABLE PublicacionVolumen(
     IdPublicacion INT NOT NULL,
     IdVolumen INT NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE PublicacionVolumen(
     CONSTRAINT FK_PublicacionVolumen_Volumen FOREIGN KEY (IdVolumen) REFERENCES Volumen(Id)
 )
 
--- Relación entre Publicacion y Tipo
+-- RelaciÃ³n entre Publicacion y Tipo
 CREATE TABLE PublicacionTipo(
     IdPublicacion INT NOT NULL,
     IdTipo INT NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE PublicacionTipo(
     CONSTRAINT FK_PublicacionTipo_Tipo FOREIGN KEY (IdTipo) REFERENCES Tipo(Id)
 )
 
--- Relación entre Publicacion y Autor
+-- RelaciÃ³n entre Publicacion y Autor
 CREATE TABLE PublicacionAutor(
     IdPublicacion INT NOT NULL,
     IdAutor INT NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE PublicacionAutor(
         REFERENCES Autor(Id)
 )
 
--- Relación entre Publicacion y Descriptor
+-- RelaciÃ³n entre Publicacion y Descriptor
 CREATE TABLE PublicacionDescriptor(
     IdPublicacion INT NOT NULL,
     IdDescriptor INT NOT NULL,
@@ -161,4 +161,5 @@ CREATE TABLE PublicacionDescriptor(
     CONSTRAINT FK_PublicacionDescriptor_Publicacion FOREIGN KEY (IdPublicacion) REFERENCES Publicacion(Id),
     CONSTRAINT FK_PublicacionDescriptor_Descriptor FOREIGN KEY (IdDescriptor) REFERENCES Descriptor(Id)
 )
+
 
